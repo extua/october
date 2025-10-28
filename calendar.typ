@@ -1,5 +1,5 @@
 #let calendar(year: "", body) = {
-  set document(title: str(year) + "calendar")
+  set document(title: str(year) + " calendar")
 
   for month in range(1, 13) [
 
