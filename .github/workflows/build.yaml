@@ -19,21 +19,18 @@ jobs:
         with:
           source_file: template/main.typ
 
-      - name: Set current year variable
-        run: echo "CURRENT_YEAR=$(date +%Y)" >> $GITHUB_ENV
-
       - name: Rename main.pdf
-        run: mv template/main.pdf calendar_"$CURRENT_YEAR".pdf
+        run: mv template/main.pdf calendar.pdf
 
       - name: Upload PDF file
         uses: actions/upload-artifact@v5
         with:
           name: PDF
-          path: calendar_"$CURRENT_YEAR".pdf
+          path: calendar.pdf
 
       - name: Release
         uses: softprops/action-gh-release@v2
         if: github.ref_type == 'tag'
         with:
           name: "${{ github.ref_name }}"
-          files: calendar_"$CURRENT_YEAR".pdf
+          files: calendar.pdf
