@@ -8,7 +8,7 @@ The calendar function accepts one parameter for the year, which should be format
 
 ```typst
 #show: calendar.with(
-  year: 2025
+  year: 2026
 )
 ```
 
