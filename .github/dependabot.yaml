@@ -4,7 +4,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      # Check for updates to GitHub Actions every month
+      # Check for updates to GitHub Actions every quarter
       interval: "quarterly"
     cooldown:
       default-days: 15
