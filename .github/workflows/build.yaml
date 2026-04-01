@@ -23,7 +23,7 @@ jobs:
         run: mv template/main.pdf calendar.pdf
 
       - name: Upload PDF file
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: PDF
           path: calendar.pdf
