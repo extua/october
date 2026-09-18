@@ -4,11 +4,13 @@ This template generates a monthly calendar, designed to be printed in landscape.
 
 ## Usage
 
-The calendar function accepts one parameter for the year, which should be formatted as an integer.
+The calendar function requires one parameter for the year, which should be formatted as an integer,
+as well as an optional argument for if Sunday or Monday should be considered the start of the week (it is Monday by default).
 
 ```typst
 #show: calendar.with(
-  year: 2026
+  year: 2026,
+  sunday_as_start: true
 )
 ```
 
