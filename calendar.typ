@@ -44,6 +44,12 @@
       week_header.insert(0, week_header.pop())
     }
 
+    #let empty_cell = none
+
+    #let monthly_days = (
+      range(1, first_day).map(empty_day => empty_cell) + monthly_days
+    )
+
     #show table.cell.where(y: 0): strong
     #pad(
       y: 5%,
@@ -52,9 +58,21 @@
         rows: (0.4fr,) + 5 * (1fr,),
         inset: 0.8em,
         table.header(..week_header),
-        ..range(1, first_day).map(empty_day => []),
-        ..monthly_days.map(day => [#day.display("[day padding:none]")]),
-        stroke: (x, y) => if y != 0 {
+        ..monthly_days.map(day => {
+          if type(day) == type(empty_cell) { return }
+          [#day.display(
+            "[day padding:none]",
+          )]
+        }),
+        stroke: (x, y) => {
+          if y == 0 { return none }
+          let cell_index = (y - 1) * 7 + x
+          if (
+            type(monthly_days.at(cell_index, default: empty_cell))
+              == type(empty_cell)
+          ) {
+            return none
+          }
           (thickness: 1.5pt)
         },
       ),
