@@ -26,32 +26,22 @@
       ]
     ]
 
-    #let first_day = if sunday_as_start {
-      int(monthly_days.first().display("[weekday repr:sunday]"))
-    } else {
-      int(monthly_days.first().display("[weekday repr:monday]"))
-    }
+    #let start_of_week = if sunday_as_start { "sunday" } else { "monday" }
+    #let first_day = int(monthly_days
+      .first()
+      .display("[weekday repr:" + start_of_week + "]"))
 
-    #let week_header = if sunday_as_start {
-      table.header(
-        [Sunday],
-        [Monday],
-        [Tuesday],
-        [Wednesday],
-        [Thursday],
-        [Friday],
-        [Saturday],
-      )
-    } else {
-      table.header(
-        [Monday],
-        [Tuesday],
-        [Wednesday],
-        [Thursday],
-        [Friday],
-        [Saturday],
-        [Sunday],
-      )
+    #let week_header = (
+      [Monday],
+      [Tuesday],
+      [Wednesday],
+      [Thursday],
+      [Friday],
+      [Saturday],
+      [Sunday],
+    )
+    #if sunday_as_start {
+      week_header.insert(0, week_header.pop())
     }
 
     #show table.cell.where(y: 0): strong
@@ -61,7 +51,7 @@
         columns: (1fr,) * 7,
         rows: (0.4fr,) + 5 * (1fr,),
         inset: 0.8em,
-        week_header,
+        table.header(..week_header),
         ..range(1, first_day).map(empty_day => []),
         ..monthly_days.map(day => [#day.display("[day padding:none]")]),
         stroke: (x, y) => if y != 0 {
