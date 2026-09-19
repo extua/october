@@ -5,12 +5,16 @@ This template generates a monthly calendar, designed to be printed in landscape.
 ## Usage
 
 The calendar function requires one parameter for the year, which should be formatted as an integer,
-as well as an optional argument for if Sunday or Monday should be considered the start of the week (it is Monday by default).
+as well as two optional arguments. 
+One for if Sunday or Monday should be considered the start of the week (it is Monday by default).
+Another for if months with 6 weeks should be modified so that the layout uses 5
+rows instead of 6.
 
 ```typst
 #show: calendar.with(
   year: 2026,
-  sunday_as_start: true
+  sunday_as_start: true,
+  normalise_to_five_weeks: true
 )
 ```
 

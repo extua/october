@@ -1,4 +1,4 @@
-#import "@preview/october:1.0.1": calendar
+#import "../calendar.typ": calendar
 
 #set page(
   "a4",
@@ -9,4 +9,6 @@
 
 #show: calendar.with(
   year: datetime.today().year(),
+  sunday_as_start: true,
+  normalise_to_five_weeks: true,
 )

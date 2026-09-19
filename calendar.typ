@@ -1,4 +1,9 @@
-#let calendar(year: "", sunday_as_start: false, body) = {
+#let calendar(
+  year: "",
+  sunday_as_start: false,
+  normalise_to_five_weeks: false,
+  body,
+) = {
   set document(title: str(year) + " calendar")
 
   for month in range(1, 13) [
@@ -46,9 +51,42 @@
 
     #let empty_cell = none
 
+    // if month has 31 days, and the first day is second to last/last day of the week,
+    // then the month will have 6 weeks
+    // if month has 30 days, and the first day is the last day of the week,
+    // then the month will have 6 weeks
+    // otherwise, no need to normalise
+
+    #let month_length = monthly_days.len()
+
+    #let total_rows = if (
+      month_length == 28 and first_day == 0
+    ) {
+      4
+    } else if month_length == 30 and first_day == 7 {
+      6
+    } else if month_length == 31 and first_day in (6, 7) {
+      6
+    } else {
+      5
+    }
+
     #let monthly_days = (
       range(1, first_day).map(empty_day => empty_cell) + monthly_days
     )
+
+    #if total_rows > 5 and normalise_to_five_weeks {
+      total_rows = 5
+
+      let _ = monthly_days.remove(0)
+      monthly_days.insert(0, monthly_days.pop())
+
+      if month_length == 31 and first_day == 7 {
+        // first cell is the moved day, so remove the next cell of padding
+        let _ = monthly_days.remove(1)
+        monthly_days.insert(0, monthly_days.pop())
+      }
+    }
 
     #show table.cell.where(y: 0): strong
     #pad(
