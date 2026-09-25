@@ -21,7 +21,9 @@
 
     #align(left)[
       #heading(level: 1)[
-        #text(size: 27pt)[#month_date.display("[month repr:long]") #year
+        #text(size: 27pt)[
+          #h(0.4em)
+          #month_date.display("[month repr:long]") #year
         ]
       ]
     ]
