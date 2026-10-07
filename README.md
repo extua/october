@@ -27,4 +27,4 @@ For example, to mark days of rest in a variable pattern of work shifts.
 
 ## License
 
-[MIT No Attribution](https://github.com/extua/october/blob/main/LICENSE) © Pierre Marshall and contributors. Created without AI.
+[MIT No Attribution](https://github.com/extua/october/blob/main/LICENSE). Created without AI.
