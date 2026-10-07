@@ -1,8 +1,8 @@
 [package]
 name = "october"
-version = "1.0.3"
+version = "1.1.0"
 entrypoint = "calendar.typ"
-authors = ["Pierre Marshall <pierre.marshall@gmail.com>"]
+authors = ["Pierre Marshall <pierre.marshall@gmail.com>", "Vinesh Benny <vinesh.benny@mail.utoronto.ca>"]
 license = "MIT-0"
 description = "Simple printable year calendar"
 repository = "https://github.com/extua/october"
