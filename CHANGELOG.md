@@ -9,11 +9,13 @@ Yearly releases are not tracked in this changelog.
 
 ## [Unreleased]
 
+## [1.1.0](https://github.com/extua/october/releases/tag/v1.1.0) - 2026-10-10
+
 This release includes two changes by Vinesh Benny (@VBenny42):
 
 - Add a layout option for weeks starting on Sunday or Monday ([#8](https://github.com/extua/october/pull/8)).
   My partner's shift calendar starts on Sundays, so this is a very useful feature!
-  This can be enabled by passing `sunday_as_start: true` to the calendar function.
+  This can be enabled by passing `sunday-as-start: true` to the calendar function.
 - Remove border around empty cells ([#6](https://github.com/extua/october/pull/6)),
   which makes the calendar look a lot neater.
 

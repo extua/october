@@ -1,4 +1,4 @@
-#import "@preview/october:1.0.1": calendar
+#import "@preview/october:1.1.0": calendar
 
 #set page(
   "a4",

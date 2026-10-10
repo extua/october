@@ -10,7 +10,7 @@ as well as an optional argument for if Sunday or Monday should be considered the
 ```typst
 #show: calendar.with(
   year: 2026,
-  sunday_as_start: true
+  sunday-as-start: true
 )
 ```
 
@@ -27,4 +27,4 @@ For example, to mark days of rest in a variable pattern of work shifts.
 
 ## License
 
-[MIT No Attribution](https://github.com/extua/october/blob/main/LICENSE). Created without AI.
+[MIT No Attribution](LICENSE). Created without AI.
